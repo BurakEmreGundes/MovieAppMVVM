@@ -84,7 +84,6 @@ class HomeViewController: UIViewController {
                 DispatchQueue.main.async {
                     self?.homeTableView.reloadData()
                 }
-                print("başarılı")
             }
         }
     }
