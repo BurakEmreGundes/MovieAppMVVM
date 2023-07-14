@@ -30,7 +30,7 @@ class MainTabBarViewController: UITabBarController {
           viewControllers = [
             createNavController(for: HomeViewController(viewModel: HomeViewModel()), title: "Home", tabbarItem: UITabBarItem(title: "Home", image: UIImage(systemName: "house"), tag: 1)),
             createNavController(for: UpcomingViewController(viewModel: UpcomingViewModel()), title: "Coming Soon", tabbarItem: UITabBarItem(title: "Coming Soon", image: UIImage(systemName: "play.circle"), tag: 1)),
-            createNavController(for: SearchViewController(), title: "Top Search", tabbarItem: UITabBarItem(title: "Top Search", image: UIImage(systemName: "magnifyingglass"), tag: 1)),
+            createNavController(for: SearchViewController(viewModel: SearchViewModel()), title: "Top Search", tabbarItem: UITabBarItem(title: "Top Search", image: UIImage(systemName: "magnifyingglass"), tag: 1)),
             createNavController(for: DownloadsViewController(), title: "Downloads", tabbarItem: UITabBarItem(title: "Downloads", image: UIImage(systemName: "arrow.down.to.line"), tag: 1)),
           ]
     }
