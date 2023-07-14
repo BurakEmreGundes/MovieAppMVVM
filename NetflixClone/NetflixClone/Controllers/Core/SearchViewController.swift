@@ -28,6 +28,7 @@ class SearchViewController: UIViewController {
        let controller = UISearchController(searchResultsController: SearchResultViewController())
         controller.searchBar.placeholder = "Search for a Movie or a Tv Show"
         controller.searchBar.searchBarStyle = .minimal
+        controller.searchResultsUpdater = self
         return controller
     }()
     
@@ -88,12 +89,33 @@ extension SearchViewController : UITableViewDelegate, UITableViewDataSource {
 }
 
 extension SearchViewController : SearchViewModelOutput {
+    
     func fetchDiscoverMoviesOutput(result: Result<[Movie], Error>) {
         switch result {
         case .success(let movies):
             self.discoverMovies = movies
         case .failure(let error):
             print(error)
+        }
+    }
+}
+
+extension SearchViewController : UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        let searchBar = searchController.searchBar
+        
+        guard let query = searchBar.text,
+              !query.trimmingCharacters(in: .whitespaces).isEmpty,
+              query.trimmingCharacters(in: .whitespaces).count >= 3,
+              let resultsController = searchController.searchResultsController as? SearchResultViewController else {return}
+        
+        viewModel.search(with: query) {result in
+            switch result {
+            case .success(let movies):
+                resultsController.resultVariables = movies
+            case .failure(let error):
+                print(error)
+            }
         }
     }
 }

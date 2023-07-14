@@ -16,14 +16,16 @@ struct SearchViewModel {
     
     weak var output : SearchViewModelOutput?
     
+    
+    func search(with query : String, completion: @escaping (Result<[Movie], Error>)  -> Void){
+        APICaller.shared.search(with: query) { result in
+            completion(result)
+        }
+    }
+    
     func fetchUpcomingMovies(){
         APICaller.shared.getDiscoverMovies { result in
-            switch result {
-            case .success(let movies):
-                output?.fetchDiscoverMoviesOutput(result: .success(movies))
-            case .failure(let error):
-                output?.fetchDiscoverMoviesOutput(result: .failure(error))
-            }
+            output?.fetchDiscoverMoviesOutput(result: result)
         }
     }
     
