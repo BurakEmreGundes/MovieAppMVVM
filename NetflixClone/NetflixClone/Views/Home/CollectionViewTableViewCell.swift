@@ -7,10 +7,17 @@
 
 import UIKit
 
+
+protocol CollectionViewTableViewCellDelegate : AnyObject{
+    func tappedCell(q : String, selectedMovie: Movie)
+}
+
 class CollectionViewTableViewCell: UITableViewCell {
 
 
     static let identifier = "CollectionViewTableViewCell"
+    
+    weak var delegate : CollectionViewTableViewCellDelegate?
     
     private var movies : [Movie] = [Movie]()
     
@@ -64,6 +71,16 @@ extension CollectionViewTableViewCell : UICollectionViewDelegate, UICollectionVi
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TitleCollectionViewCell.identifier, for: indexPath) as? TitleCollectionViewCell else {return UICollectionViewCell()}
         cell.configure(with: movies[indexPath.row].poster_path ?? "")
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        collectionView.deselectItem(at: indexPath, animated: true)
+        
+        let movie = movies[indexPath.row]
+        guard let titleName = movie.original_title ?? movie.original_name else {return}
+        
+        delegate?.tappedCell(q: titleName, selectedMovie: self.movies[indexPath.row])
+
     }
     
 }

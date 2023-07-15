@@ -11,6 +11,9 @@ class HomeViewController: UIViewController {
     
     let sectionTitles : [String] = ["Trending Movies", "Popular", "Trending Tv", "Upcoming Movies", "Top Rated"]
     
+    
+    private var selectedMovie : Movie? = nil
+    
     private lazy var homeTableView : UITableView = {
         let tbv = UITableView(frame: .zero, style: .grouped)
         tbv.register(CollectionViewTableViewCell.self, forCellReuseIdentifier: CollectionViewTableViewCell.identifier)
@@ -22,6 +25,7 @@ class HomeViewController: UIViewController {
     init(viewModel : HomeViewModel){
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
+        self.viewModel.output = self
     }
 
     required init?(coder: NSCoder) {
@@ -88,6 +92,13 @@ class HomeViewController: UIViewController {
         }
     }
     
+    private func gotoMoviewPreview(with model : MoviewPreviewUIModel){
+        let vc = MoviePreviewViewController()
+        vc.configure(with: model)
+        navigationController?.navigationBar.transform = .init(translationX: 0, y: 0)
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
 }
 
 extension HomeViewController : UITableViewDelegate, UITableViewDataSource {
@@ -103,6 +114,7 @@ extension HomeViewController : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: CollectionViewTableViewCell.identifier, for: indexPath) as? CollectionViewTableViewCell else {return UITableViewCell()}
         cell.selectionStyle = .none
+        cell.delegate = self
         
         switch indexPath.section {
         case 0 :
@@ -151,5 +163,35 @@ extension HomeViewController : UITableViewDelegate, UITableViewDataSource {
         
     }
     
+    
+}
+
+extension HomeViewController : CollectionViewTableViewCellDelegate {
+    func tappedCell(q: String, selectedMovie: Movie) {
+        self.selectedMovie = selectedMovie
+        viewModel.getMoviefromYoutube(q: q)
+    }
+}
+
+extension HomeViewController : HomeViewModelOutput {
+    
+    func getMoviefromYoutubeOutput(result: Result<VideoElement, Error>) {
+        switch result {
+        case .success(let videoElement):
+            print(videoElement.id)
+            
+            guard let selectedMovie = selectedMovie, let titleName = selectedMovie.original_title ?? selectedMovie.original_name, let titleOverview = selectedMovie.overview else {return}
+            
+            let model = MoviewPreviewUIModel(title: titleName, youtubeView: videoElement, titleOverview: titleOverview)
+            DispatchQueue.main.async { [weak self] in
+                self?.gotoMoviewPreview(with: model)
+            }
+        case .failure(let error):
+            self.selectedMovie = nil
+            print(error)
+        }
+    }
+    
+
     
 }

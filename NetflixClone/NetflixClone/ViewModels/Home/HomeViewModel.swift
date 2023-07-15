@@ -9,19 +9,26 @@ import Foundation
 
 
 protocol HomeViewModelOutput : AnyObject{
-    func fetchAllMoviesOutput()
+    func getMoviefromYoutubeOutput(result: Result<VideoElement,Error>)
 }
 
 
 class HomeViewModel {
     
-    weak var delegate : HomeViewModelOutput?
+    weak var output : HomeViewModelOutput?
     
     var trendingMovies: [Movie] = []
     var trendingTVs: [Movie] = []
     var upcomingMovies: [Movie] = []
     var popularMovies: [Movie] = []
     var topRatedMovies: [Movie] = []
+    
+    
+    func getMoviefromYoutube(q : String){
+        APICaller.shared.getMovie(with: q) {[weak self] result in
+            self?.output?.getMoviefromYoutubeOutput(result: result)
+        }
+    }
     
     func fetchAllMovies(completion : @escaping (Bool) -> Void){
         let dispatchGroup = DispatchGroup()
@@ -106,10 +113,10 @@ class HomeViewModel {
         }
 
         dispatchGroup.notify(queue: DispatchQueue.main) {
-            print("trending movies \(String(describing: self.trendingMovies))")
-            print("trending tvs \(String(describing: self.trendingTVs))")
-            print("popular movies \(String(describing: self.popularMovies))")
-            print("upcoming movies \(String(describing: self.upcomingMovies))")
+            //print("trending movies \(String(describing: self.trendingMovies))")
+            //print("trending tvs \(String(describing: self.trendingTVs))")
+            //print("popular movies \(String(describing: self.popularMovies))")
+            //print("upcoming movies \(String(describing: self.upcomingMovies))")
             completion(status)
         }
     }
