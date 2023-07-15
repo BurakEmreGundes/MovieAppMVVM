@@ -40,8 +40,12 @@
   - iOS, macOS ready.
 
 ## Screenshots
-- <img width="163" alt="1" src="https://github.com/BurakEmreGundes/MovieAppMVVM/assets/63010381/c36ebb20-e990-4c13-aca1-1b2597ef127c"> <img width="163" alt="2" src="https://user-images.githubusercontent.com/89473605/200177329-23db1088-636e-4744-91de-c9de50a29817.png"> <img width="163" alt="3" src="https://user-images.githubusercontent.com/89473605/200177330-4e8a7b71-6f05-4706-b9be-b5d1627a25d4.png"> <img width="163" alt="4" src="https://user-images.githubusercontent.com/89473605/200177331-c7ae70ad-fc73-47b4-b92a-47af14937543.png"> <img width="163" alt="5" src="https://user-images.githubusercontent.com/89473605/200177333-dc811d1f-3342-4ddc-a85c-391d3733b067.png"> <img width="163" alt="6" src="https://user-images.githubusercontent.com/89473605/200177334-e844cf2f-67a5-4549-a1b9-aeccfa1b22d8.png"> <img width="163" alt="7" src="https://user-images.githubusercontent.com/89473605/200177335-2e860fc9-91c7-49ab-8ea2-408dc492892a.png"> <img width="163" alt="8" src="https://user-images.githubusercontent.com/89473605/200177336-dd8823a8-f358-4a65-8ee0-f1c81464081b.png"> <img width="163" alt="9" src="https://user-images.githubusercontent.com/89473605/200177337-abc3933f-364a-4609-ace5-f9d7c181b817.png"> <img width="163" alt="10" src="https://user-images.githubusercontent.com/89473605/200177338-379f08f9-d376-4a5e-83d5-184fed3698f2.png"> <img width="163" alt="111" src="https://user-images.githubusercontent.com/89473605/200177341-61cc61e9-133a-479c-a2a1-5825e6a8fe1c.png">
-
+<img width="163" alt="1" src="https://github.com/BurakEmreGundes/MovieAppMVVM/assets/63010381/c36ebb20-e990-4c13-aca1-1b2597ef127c"> 
+<img width="163" alt="2" src="https://github.com/BurakEmreGundes/MovieAppMVVM/assets/63010381/610ca183-778c-436c-a22b-ffa10375b363"> 
+<img width="163" alt="3" src="https://github.com/BurakEmreGundes/MovieAppMVVM/assets/63010381/2b49f0a3-fb12-4416-9701-2ac08da1b0ff"> 
+<img width="163" alt="4" src="https://github.com/BurakEmreGundes/MovieAppMVVM/assets/63010381/2f64154c-5ad2-4fdc-8672-2072cd51f104"> 
+<img width="163" alt="5" src="https://github.com/BurakEmreGundes/MovieAppMVVM/assets/63010381/8ca54e41-57a9-4318-aa5e-b7db31e53a9a">
+<img width="163" alt="6" src="https://github.com/BurakEmreGundes/MovieAppMVVM/assets/63010381/1f557ae7-3c57-40ae-9bd7-d077c0212353"> <img 
 
 ## Installation
 
