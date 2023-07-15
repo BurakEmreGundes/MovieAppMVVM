@@ -11,6 +11,9 @@ class HomeViewController: UIViewController {
     
     let sectionTitles : [String] = ["Trending Movies", "Popular", "Trending Tv", "Upcoming Movies", "Top Rated"]
     
+    
+    private var selectedMovie : Movie? = nil
+    
     private lazy var homeTableView : UITableView = {
         let tbv = UITableView(frame: .zero, style: .grouped)
         tbv.register(CollectionViewTableViewCell.self, forCellReuseIdentifier: CollectionViewTableViewCell.identifier)
@@ -89,6 +92,13 @@ class HomeViewController: UIViewController {
         }
     }
     
+    private func gotoMoviewPreview(with model : MoviewPreviewUIModel){
+        let vc = MoviePreviewViewController()
+        vc.configure(with: model)
+        navigationController?.navigationBar.transform = .init(translationX: 0, y: 0)
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
 }
 
 extension HomeViewController : UITableViewDelegate, UITableViewDataSource {
@@ -157,7 +167,8 @@ extension HomeViewController : UITableViewDelegate, UITableViewDataSource {
 }
 
 extension HomeViewController : CollectionViewTableViewCellDelegate {
-    func tappedCell(q : String) {
+    func tappedCell(q: String, selectedMovie: Movie) {
+        self.selectedMovie = selectedMovie
         viewModel.getMoviefromYoutube(q: q)
     }
 }
@@ -168,9 +179,19 @@ extension HomeViewController : HomeViewModelOutput {
         switch result {
         case .success(let videoElement):
             print(videoElement.id)
+            
+            guard let selectedMovie = selectedMovie, let titleName = selectedMovie.original_title ?? selectedMovie.original_name, let titleOverview = selectedMovie.overview else {return}
+            
+            let model = MoviewPreviewUIModel(title: titleName, youtubeView: videoElement, titleOverview: titleOverview)
+            DispatchQueue.main.async { [weak self] in
+                self?.gotoMoviewPreview(with: model)
+            }
         case .failure(let error):
+            self.selectedMovie = nil
             print(error)
         }
     }
+    
+
     
 }

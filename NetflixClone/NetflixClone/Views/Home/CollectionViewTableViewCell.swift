@@ -9,7 +9,7 @@ import UIKit
 
 
 protocol CollectionViewTableViewCellDelegate : AnyObject{
-    func tappedCell(q : String)
+    func tappedCell(q : String, selectedMovie: Movie)
 }
 
 class CollectionViewTableViewCell: UITableViewCell {
@@ -79,7 +79,7 @@ extension CollectionViewTableViewCell : UICollectionViewDelegate, UICollectionVi
         let movie = movies[indexPath.row]
         guard let titleName = movie.original_title ?? movie.original_name else {return}
         
-        delegate?.tappedCell(q : titleName)
+        delegate?.tappedCell(q: titleName, selectedMovie: self.movies[indexPath.row])
 
     }
     
