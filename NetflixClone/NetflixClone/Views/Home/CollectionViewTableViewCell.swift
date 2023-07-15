@@ -60,6 +60,10 @@ class CollectionViewTableViewCell: UITableViewCell {
         }
     }
     
+    private func downloadMovieAt(index : Int){
+        print("Download: \(movies[index].original_title)")
+    }
+    
 }
 
 extension CollectionViewTableViewCell : UICollectionViewDelegate, UICollectionViewDataSource {
@@ -81,6 +85,20 @@ extension CollectionViewTableViewCell : UICollectionViewDelegate, UICollectionVi
         
         delegate?.tappedCell(q: titleName, selectedMovie: self.movies[indexPath.row])
 
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, contextMenuConfigurationForItemAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
+        
+        let config = UIContextMenuConfiguration(identifier: nil, previewProvider: nil) {[weak self] _ in
+            let downloadAction = UIAction(title: "Download",state: .off) { _ in
+                self?.downloadMovieAt(index: indexPath.row)
+            }
+            
+            return UIMenu(options: .displayInline, children: [downloadAction])
+        }
+        
+        
+        return config
     }
     
 }
