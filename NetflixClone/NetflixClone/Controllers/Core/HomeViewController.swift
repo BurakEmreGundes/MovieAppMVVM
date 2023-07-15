@@ -22,6 +22,7 @@ class HomeViewController: UIViewController {
     init(viewModel : HomeViewModel){
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
+        self.viewModel.output = self
     }
 
     required init?(coder: NSCoder) {
@@ -103,6 +104,7 @@ extension HomeViewController : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: CollectionViewTableViewCell.identifier, for: indexPath) as? CollectionViewTableViewCell else {return UITableViewCell()}
         cell.selectionStyle = .none
+        cell.delegate = self
         
         switch indexPath.section {
         case 0 :
@@ -151,5 +153,24 @@ extension HomeViewController : UITableViewDelegate, UITableViewDataSource {
         
     }
     
+    
+}
+
+extension HomeViewController : CollectionViewTableViewCellDelegate {
+    func tappedCell(q : String) {
+        viewModel.getMoviefromYoutube(q: q)
+    }
+}
+
+extension HomeViewController : HomeViewModelOutput {
+    
+    func getMoviefromYoutubeOutput(result: Result<VideoElement, Error>) {
+        switch result {
+        case .success(let videoElement):
+            print(videoElement.id)
+        case .failure(let error):
+            print(error)
+        }
+    }
     
 }
