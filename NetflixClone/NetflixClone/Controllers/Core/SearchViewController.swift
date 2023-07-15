@@ -57,7 +57,7 @@ class SearchViewController: UIViewController {
     
     
     private func setupNav(){
-        title = "Upcoming"
+        title = "Search"
         self.navigationController?.navigationBar.prefersLargeTitles = true
         self.navigationItem.largeTitleDisplayMode = .always
         
