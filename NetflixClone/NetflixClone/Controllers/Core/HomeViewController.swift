@@ -45,6 +45,12 @@ class HomeViewController: UIViewController {
         homeTableView.frame = view.bounds
     }
     
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        
+        navigationController?.navigationBar.transform = .init(translationX: 0, y: 0)
+    }
+    
     private lazy var leftBarNetflixButton : UIButton = {
         let btn = UIButton(type: .custom)
         var image = UIImage(named: "netflixLogo")
@@ -95,7 +101,6 @@ class HomeViewController: UIViewController {
     private func gotoMoviewPreview(with model : MoviewPreviewUIModel){
         let vc = MoviePreviewViewController()
         vc.configure(with: model)
-        navigationController?.navigationBar.transform = .init(translationX: 0, y: 0)
         self.navigationController?.pushViewController(vc, animated: true)
     }
     

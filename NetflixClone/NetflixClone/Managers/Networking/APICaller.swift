@@ -14,7 +14,7 @@ class APICaller {
     struct Constants {
         static let API_KEY = "8766b4915e979ef7c97d4e60e5fb4c6e"
         static let baseURL = "https://api.themoviedb.org"
-        static let YoutubeAPI_KEY = "AIzaSyBV5avLK5Y8plcf_ljroRy1gPcEUb62d-A"
+        static let YoutubeAPI_KEY = "AIzaSyCumxoDaUEdoALFXPhrL7CIR06XO4a9guk"
         static let YoutubeBaseURL = "https://youtube.googleapis.com/youtube/v3/search?"
     }
     
