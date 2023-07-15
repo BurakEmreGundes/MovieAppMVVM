@@ -15,8 +15,6 @@
   <a href="#installation">Installation</a> •
   <a href="#download">Download</a> •
   <a href="#technologies-used">Technologies Used</a> •
-  <a href="#credits">Credits</a> •
-  <a href="#license">License</a>
 </p>
 
 ## Key Features
