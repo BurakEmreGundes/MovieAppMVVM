@@ -45,7 +45,7 @@
 <img width="163" alt="5" src="https://github.com/BurakEmreGundes/MovieAppMVVM/assets/63010381/8ca54e41-57a9-4318-aa5e-b7db31e53a9a">
 <img width="163" alt="6" src="https://github.com/BurakEmreGundes/MovieAppMVVM/assets/63010381/1f557ae7-3c57-40ae-9bd7-d077c0212353"> <img 
 
-## Installation
+# Installation
 
 To clone and run this application, you'll need [Git](https://git-scm.com) installed on your computer. From your command line:
 
