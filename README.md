@@ -71,7 +71,6 @@ You can [download](https://github.com/BurakEmreGundes/MovieAppMVVM) the latest i
   <tr>
     <td><img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white"/></td>
     <td><img src="https://img.shields.io/badge/GIT-E44C30?style=for-the-badge&logo=git&logoColor=white"/></td>
-    <td><img src="https://img.shields.io/badge/Auto_Layout-fbc093?style=for-the-badge&logo=swift&logoColor=white"/></td>
   </tr>
 </table>
 
