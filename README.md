@@ -33,7 +33,7 @@
 * Core Data
 * Fully Cocoapods build
 * Live Video
-  - ![bazaarway](https://user-images.githubusercontent.com/89473605/200179371-66ed6240-2afa-47a6-a204-82e7896a4988.gif)
+  
 
 
 * Cross platform
